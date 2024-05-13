@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Twitter Post and Generate Image</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<head>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    
+    <link rel="stylesheet" href="https://cdn.rawgit.com/nobleclem/jQuery-MultiSelect/master/jquery.multiselect.css">
+    
+    <style>
+        .jquery-multiselect {
+            background-color: #f8f9fa; /* Light grey background */
+            border: 10px solid #007bff; /* Blue border */
+        }
+        
+        .jquery-multiselect .option {
+            color: #333; /* Darker text for better readability */
+        }
+        </style>
+    <script src="https://cdn.rawgit.com/nobleclem/jQuery-MultiSelect/master/jquery.multiselect.js"></script>
+
+    
+    <title>Create Twitter Post and Generate Image</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1>POC - AI Post Creation X</h1>
+        <h3>This POC is capable of inputting text and the system could analyze content, extract key sentiments and keywords, and creatively summarize and generate posts in various tones tailored to my preference and my personalization for Twitter with image generation capabilities.</h3>
+        <form action="/" method="post" class="form">
+            <div class="form-group">
+                <textarea name="content" rows="4" cols="50" placeholder="//user input" class="textarea"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="tone-style">Choose the tone</label>
+                <select name="tone-style" id="tone-style" class="input" multiple>
+                    <option value="1">Optimistic</option>
+                    <option value="2">Inquisitive</option>
+                    <option value="3">Urgent</option>
+                    <option value="4">Informative</option>
+                    <option value="5">Call to Action</option>
+                    <option value="6">Humorous</option>
+                    <option value="7">Inspirational</option>
+                    <option value="8">Storytelling</option>
+                    <option value="9">Conversational</option>
+                    <option value="10">Educational</option>
+                    <option value="11">All</option>
+                </select>
+            </div>
+            
+            <input type="submit" value="Generate" class="button">
+        </form>
+        
+        <div class="container">
+            {% if tweet_alternatives %}
+                <h2>Generated Post @nithinjohn</h2>
+                {% for tweet_info in tweet_alternatives %}
+                    <div class="tweet">
+                        <strong>{{ tweet_info['prompt_name'] }}</strong>
+                        <p>{{ tweet_info['text'] }}</p>
+                        {% if tweet_info['image_url'] %}
+                            <img src="{{ tweet_info['image_url'] }}" alt="Generated Image" class="generated-image">
+                        {% endif %}
+                        <button onclick="generateComments(this, {{ tweet_info['text'] | tojson }})" class="button edit-button">Edit</button>
+<button onclick="generateComments(this, {{ tweet_info['text'] | tojson }})" class="button share-button">Share </button>
+<button onclick="generateComments(this, {{ tweet_info['text'] | tojson }})" class="button schedule-button">Schedule</button>
+
+
+                        <div class="comments-container"></div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+        
+    </div>
+    <script>
+        
+        document.addEventListener('DOMContentLoaded', function() {
+    function generateComments(buttonElement, content) {
+        fetch('/generate-comments', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({ content: content })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if(data.comments) {
+                const commentsContainer = buttonElement.nextElementSibling;
+                commentsContainer.innerHTML = ''; // Clear previous comments
+                data.comments.forEach(comment => {
+                    const commentDiv = document.createElement('div');
+                    commentDiv.textContent = comment.text;
+                    commentsContainer.appendChild(commentDiv);
+                });
+            }
+        })
+    
+        .catch(error => console.error('Error:', error));
+        function sharePost(buttonElement) {
+    
+    var modal = document.createElement('div');
+    modal.className = 'modal';
+    modal.innerHTML = '<div class="modal-content"><span class="close">&times;</span><div class="modal-body"><img src="path_to_check_mark_image" alt="Success Icon" class="success-icon"><p>Post is successfully shared to X</p></div></div>';
+
+    
+    document.body.appendChild(modal);
+
+    
+    var span = document.getElementsByClassName("close")[0];
+
+    
+    span.onclick = function() {
+        modal.style.display = "none";
+        document.body.removeChild(modal);
+    }
+
+    
+    modal.style.display = "block";}
+}
+
+
+});
+
+
+    </script>
+    <script>
+$(document).ready(function() {
+    $('#tone-style').multiselect({
+        columns: 1,
+        placeholder: 'select tone',
+        search: true,
+        selectAll: true
+    });
+});
+</script>
+</body>
+
+
+</html>
+

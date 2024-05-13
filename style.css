@@ -1,0 +1,198 @@
+/* General body styling */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #000000;
+  color: #ffffff;
+}
+
+/* Container for the whole page */
+.container {
+  max-width: 600px;
+  margin: 20px auto;
+  background-color: #000000;
+  border: 1px solid #000000;
+  border-radius: 24px;
+  padding: 20px;
+}
+
+/* Style for each tweet */
+.tweet {
+  background-color: #000000;
+  border: 1px solid #000000;
+  border-radius: 6px;
+  padding: 20px;
+  margin-bottom: 20px;
+  margin-right: 20px;
+}
+
+/* Header of each tweet, including prompt name */
+.tweet strong {
+  display: block;
+  color: #1da1f2;
+  margin-bottom: 10px;
+}
+
+/* Generated tweet text */
+.tweet p {
+  margin: 10px 0;
+  line-height: 1.5;
+}
+
+/* Style for the generated image */
+.generated-image {
+  max-width: 100%;
+  border-radius: 6px;
+  margin-top: 10px;
+}
+
+/* Style for the form and its elements */
+.form-group {
+  margin-bottom: 20px;
+
+}
+
+.textarea, .input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 12px;
+  border: 1px solid #ffffff;
+}
+
+.button {
+  background-color: #1da1f2;
+  width: 100px;
+  padding: 10px;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: none;
+  border-radius: 24px;
+}
+
+.edit-button {
+  padding-top: 10px;
+  background-color: #e1e8ed;
+  color: #333;
+}
+
+.share-button, .schedule-button {
+  padding-top: 10px;
+  background-color: #1da1f2;
+}
+
+.share-button:active {
+  padding-top: 10px;
+  background-color: #148f77; /* Temporary color change to indicate action */
+  transition: background-color 0.5s ease;
+}
+
+.share-confirmation {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #1da1f2;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  z-index: 1000;
+  display: none;
+}
+
+
+
+.button:hover {
+  opacity: 0.85; /* Slight opacity change on hover for interactive effect */
+}
+
+.button:active {
+  opacity: 0.75; /* More pronounced effect when the button is clicked */
+}
+
+.h1 {
+  color: #ffffff;
+}
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  color: #000000;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+  border-radius: 10px; /* Optional */
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* Success icon in the modal */
+.success-icon {
+  width: 50px; /* Adjust as needed */
+  display: block;
+  margin: 0 auto; /* Center the icon horizontally */
+}
+
+.modal-body {
+  text-align: center; /* Center the text */
+}
+
+.input[multiple] {
+  height: auto;  /* Let the size of the dropdown adjust based on the size attribute */
+  overflow-y: auto; /* Allow scrolling */
+}
+
+/* General Styling for the labels */
+#ms-list-1 .ms-options-wrap > .ms-options > ul > li > label {
+    padding: 10px; /* Increase padding */
+    background-color: #f0f0f0; /* Change background */
+    border: 1px solid #ccc; /* Add border */
+    width: 100%; /* Ensure it fills the container */
+    display: block; /* Makes the label behave like a block element */
+    cursor: pointer; /* Change cursor to pointer to indicate it's selectable */
+}
+
+/* Styling for the labels when the checkbox is checked */
+#ms-list-1 .ms-options-wrap > .ms-options > ul > li > label input[type="checkbox"]:checked + span {
+    color: #fff; /* Change text color when selected */
+    background-color: #007BFF; /* Change background color when selected */
+    border-color: #007BFF; /* Optional: change border color when selected */
+}
+
+.jquery-multiselect {
+  background-color: #f8f9fa; /* Light grey background */
+  border: 10px solid #007bff; /* Blue border */
+}
+
+.jquery-multiselect .option {
+  color: #333; /* Darker text for better readability */
+}
