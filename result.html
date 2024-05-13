@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Generated Image Result</title>
+</head>
+<body>
+    <h1>Generated Image</h1>
+    {% if error %}
+        <p>An error occurred while generating the image. Please try again.</p>
+    {% elif image_url %}
+        <img src="{{ image_url }}" alt="Generated Image" style="max-width: 80%;">
+    {% else %}
+        <p>No image generated. Please ensure the content is suitable for image generation.</p>
+    {% endif %}
+    <a href="/">Back to Home</a>
+</body>
+</html>
